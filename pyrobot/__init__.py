@@ -16,7 +16,7 @@
 
 from sys import version_info
 
-__version__ = "0.0.1"
+__version__ = "1.0.0"
 
 if version_info[:2] < (3, 6):
     # Verify Python 3.6+ is used

@@ -31,7 +31,7 @@ class PyroBot(Client):
 
         plugins = dict(root=f"{name}/plugins")
         super().__init__(
-            session_name=name,
+            session_name=":memory:",
             app_version=f"PyroBot v{__version__}",
             workdir=".",
             config_file=config_file,
@@ -43,6 +43,6 @@ class PyroBot(Client):
         await super().start()
         print(f"PyroBot started with Version v{__version__}")
 
-    async def stop(self):
+    async def stop(self, *args):
         await super().stop()
         print("PyroBot stopped. Bye.")

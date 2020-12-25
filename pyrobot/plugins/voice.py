@@ -18,7 +18,8 @@ import asyncio
 import os
 
 import gtts
-from pyrogram import Filters, Message
+from pyrogram import filters
+from pyrogram.types import Message
 from pyrogram.errors import ChatSendMediaForbidden
 
 from ..pyrobot import PyroBot
@@ -27,7 +28,7 @@ from ..utils import helpers
 gtts_langs = gtts.lang.tts_langs()
 
 
-@PyroBot.on_message(Filters.me & Filters.command("v", "!"))
+@PyroBot.on_message(filters.me & filters.command("v", "."))
 async def alive(app: PyroBot, message: Message):
     if len(message.command) == 1:
         await message.delete()

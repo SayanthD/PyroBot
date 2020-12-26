@@ -14,27 +14,25 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from configparser import ConfigParser
+__version__ = "1.0.1"
 
 from pyrogram import Client
 
-from . import __version__
+from .config import Config
 
 
 class PyroBot(Client):
     def __init__(self):
         name = self.__class__.__name__.lower()
-        config_file = f"{name}.ini"
-
-        config = ConfigParser()
-        config.read(config_file)
 
         plugins = dict(root=f"{name}/plugins")
         super().__init__(
             session_name=":memory:",
+            api_id=Config.APP_ID,
+            api_hash=Config.API_HASH,
+            bot_token=Config.BOT_TOKEN,
+            workdir=Config.WORK_DIR,
             app_version=f"PyroBot v{__version__}",
-            workdir=".",
-            config_file=config_file,
             workers=8,
             plugins=plugins,
         )

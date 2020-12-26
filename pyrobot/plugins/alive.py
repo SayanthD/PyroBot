@@ -14,12 +14,23 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from pyrogram import filters
+from datetime import datetime
+
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from ..pyrobot import PyroBot
+from ..config import Config
 
 
-@PyroBot.on_message(filters.me & filters.command("alive", "."))
-async def alive(app: PyroBot, message: Message):
-    await message.edit_text("`I'm alive, Master`")
+@Client.on_message(filters.command("alive", Config.CMD_HANDLER))
+async def alive(_, msg: Message):
+    await msg.reply("`I'm alive, Master`")
+
+
+@Client.on_message(filters.command("ping", Config.CMD_HANDLER))
+async def ping_me(_, msg: Message):
+    start = datetime.now()
+    pong = await msg.reply("Pong!")
+    end = datetime.now()
+    ms = (end - start).microseconds / 1000
+    await pong.edit(f"**Pong!**\n`{ms} ms`")

@@ -8,10 +8,9 @@ A [Telegram](https://telegram.org) Userbot powered by [Pyrogram](https://pyrogra
 
 ## Setup
 You have to obtain your personal API credentials from [Telegram](https://my.telegram.org?to=apps).
-Fill these into the [sample config file](pyrobot.ini.sample).
 
-1. `git clone https://github.com/ColinTheShark/PyroBot.git`
-2. Copy or rename [`pyrobot.ini.sample`](pyrobot.ini.sample) to `pyrobot.ini` and fill it out as instructed
+1. `git clone https://github.com/SayanthD/PyroBot.git`
+2. Setup environment variables as `config.py`
 3. Start PyroBot with `python -m pyrobot`
 
 You can now log in via Pyrogram and send `.alive` to see your PyroBot working.
